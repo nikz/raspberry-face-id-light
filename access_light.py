@@ -9,6 +9,16 @@
 import face_recognition
 import picamera
 import numpy as np
+import unicornhat
+
+unicornhat.brightness(0.5)
+
+def turn_on_green_light():
+    print("GREEN")
+
+
+def turn_on_red_light():
+    print("RED")
 
 # Get a reference to the Raspberry Pi camera.
 # If this fails, make sure you have a camera connected to the RPi and that you
@@ -45,5 +55,10 @@ while True:
 
         if match[0]:
             name = "Matty the Patty"
+            # turn on the green light!
+            turn_on_green_light()
+        else:
+            # turn on the red light!
+            turn_on_red_light()
 
         print("I see someone named {}!".format(name))
