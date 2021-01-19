@@ -47,6 +47,9 @@ face_encodings = []
 
 while True:
     print("Capturing image.")
+    unicornhat.set_all(255, 255, 255)
+    unicornhat.show()
+
     # Grab a single frame of video from the RPi camera as a numpy array
     camera.capture(output, format="rgb")
 
@@ -54,6 +57,8 @@ while True:
     face_locations = face_recognition.face_locations(output)
     print("Found {} faces in image.".format(len(face_locations)))
     face_encodings = face_recognition.face_encodings(output, face_locations)
+
+    unicornhat.off()
 
     # Loop over each face found in the frame to see if it's someone we know.
     for face_encoding in face_encodings:
