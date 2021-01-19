@@ -11,16 +11,25 @@ import face_recognition
 import picamera
 import numpy as np
 import unicornhat
+from time import sleep
 
 unicornhat.brightness(0.5)
 
 def turn_on_green_light():
     print("GREEN")
     unicornhat.set_all(0,255,0)
+    for x in range(0, 3):
+        unicornhat.show()
+        sleep(1)
+        unicornhat.off()
 
 def turn_on_red_light():
     print("RED")
     unicornhat.set_all(255,0,0)
+    for x in range(0, 3):
+        unicornhat.show()
+        sleep(1)
+        unicornhat.off()
 
 # Get a reference to the Raspberry Pi camera.
 # If this fails, make sure you have a camera connected to the RPi and that you
