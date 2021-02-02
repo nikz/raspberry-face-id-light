@@ -19,15 +19,11 @@ def turn_on_green_light():
     print("GREEN")
     unicornhat.set_all(0,255,0)
     unicornhat.show()
-    sleep(3)
-    unicornhat.off()
 
 def turn_on_red_light():
     print("RED")
     unicornhat.set_all(255,0,0)
     unicornhat.show()
-    sleep(3)
-    unicornhat.off()
 
 # Get a reference to the Raspberry Pi camera.
 # If this fails, make sure you have a camera connected to the RPi and that you
@@ -37,15 +33,22 @@ camera.resolution = (320, 240)
 output = np.empty((240, 320, 3), dtype=np.uint8)
 
 # Load a sample picture and learn how to recognize it.
+unicornhat.set_all(0, 0, 255)
+unicornhat.show()
+
 print("Loading known face image(s)")
 allowed_image = face_recognition.load_image_file("allowed.jpg")
 allowed_face_encoding = face_recognition.face_encodings(allowed_image)[0]
+
+unicornhat.off()
 
 # Initialize some variables
 face_locations = []
 face_encodings = []
 
 while True:
+    unicornhat.off()
+
     print("Capturing image.")
     unicornhat.set_all(255, 255, 255)
     unicornhat.show()
