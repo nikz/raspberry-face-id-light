@@ -74,8 +74,11 @@ while True:
             name = "Matty the Patty"
             # turn on the green light!
             turn_on_green_light()
+            sleep(3.5)
         else:
             # turn on the red light!
             turn_on_red_light()
+            sleep(3.5)
+            
 
         print("I see someone named {}!".format(name))
